@@ -8,6 +8,7 @@ this plugin. You are free to use and modify this plugin as needed for your proje
 
 ## Installation
 Upload the contents of this plugin to the `wp-content/plugins` folder. This can be done using FTP or using the admin interface. 
+After uploading, install the composer modules.
 After installation and activation of the plugin, an admin menu item "onFact" will be visible.
 
 ## Configuration
