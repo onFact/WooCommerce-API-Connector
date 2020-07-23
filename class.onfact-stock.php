@@ -60,13 +60,13 @@ class Onfact_Stock
             \OnFact\Endpoint\Api::setCompanyUuid(get_option('company_uuid'));
             $onFactApi = new \OnFact\Endpoint\Products();
             $products = $onFactApi->index([
-                'q' => 'number:' . $product->get_sku() . ''
-            ]);
+                'q' => 'number:' . $product->get_sku() . ' OR eid:' . $product->get_sku() . ''
+            ], ['X-FORCE-CACHE' => 300]);
 
             if ($products->getCount() == 0) {
                 $products = $onFactApi->index([
-                    'q' => 'name:' . $product->get_name() . ' OR number:*' . $product->get_sku() . '*'
-                ]);
+                    'q' => 'name:' . $product->get_name() . ' OR number:*' . $product->get_sku() . '*  OR eid:*' . $product->get_sku() . '*'
+                ], ['X-FORCE-CACHE' => 300]);
             }
 
             if ($products->getCount() > 0) {

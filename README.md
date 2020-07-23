@@ -1,5 +1,5 @@
 # onFact WooCommerce plugin
-Version: 0.0.1
+Version: 0.0.2
 
 ## Disclaimer
 This plugin is provided as an open source project. onFact does not provide any guarantee or support for

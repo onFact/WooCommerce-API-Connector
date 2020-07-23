@@ -7,7 +7,7 @@
  * Author: Kevin Van Gyseghem
  * Author URI: http://www.infinwebs.be
  */
-define( 'ONFACT__VERSION', '0.0.1' );
+define( 'ONFACT__VERSION', '0.0.2' );
 define( 'ONFACT__MINIMUM_WP_VERSION', '4.0' );
 define( 'ONFACT__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
