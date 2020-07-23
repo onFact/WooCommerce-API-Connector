@@ -54,25 +54,22 @@ class Onfact_Settings
      * @return \OnFact\Endpoint\Languages|\OnFact\Helper\Index
      */
     public static function get_onfact_languages() {
-        try {
-            \OnFact\Endpoint\Api::setApiKey(get_option('api_key'));
-            \OnFact\Endpoint\Api::setCompanyUuid(get_option('company_uuid'));
-            $languages = new \OnFact\Endpoint\Languages();
-            $languages = $languages->index([], ['X-FORCE-CACHE' => 3000]);
+        \OnFact\Endpoint\Api::setApiKey(get_option('api_key'));
+        \OnFact\Endpoint\Api::setCompanyUuid(get_option('company_uuid'));
 
-            foreach ($languages->getItems() as $language) {
-                register_setting( 'onfact-settings-orderslip', 'orderslip_description_' . $language->getId());
-                register_setting( 'onfact-settings-orderslip', 'orderslip_emaildescription_' . $language->getId());
-                register_setting( 'onfact-settings-deliveryslip', 'deliveryslip_description_' . $language->getId());
-                register_setting( 'onfact-settings-deliveryslip', 'deliveryslip_emaildescription_' . $language->getId());
-                register_setting( 'onfact-settings-invoice', 'invoice_description_' . $language->getId());
-                register_setting( 'onfact-settings-invoice', 'invoice_emaildescription_' . $language->getId());
-            }
+        $languages = new \OnFact\Endpoint\Languages();
+        $languages = $languages->index([], ['X-FORCE-CACHE' => 3000]);
 
-            return $languages;
-        }  catch (\Exception $e) {
-            return [];
+        foreach ($languages->getItems() as $language) {
+            register_setting( 'onfact-settings-orderslip', 'orderslip_description_' . $language->getId());
+            register_setting( 'onfact-settings-orderslip', 'orderslip_emaildescription_' . $language->getId());
+            register_setting( 'onfact-settings-deliveryslip', 'deliveryslip_description_' . $language->getId());
+            register_setting( 'onfact-settings-deliveryslip', 'deliveryslip_emaildescription_' . $language->getId());
+            register_setting( 'onfact-settings-invoice', 'invoice_description_' . $language->getId());
+            register_setting( 'onfact-settings-invoice', 'invoice_emaildescription_' . $language->getId());
         }
+
+        return $languages;
     }
 
     /**
@@ -86,7 +83,7 @@ class Onfact_Settings
         \OnFact\Endpoint\Api::setCompanyUuid(get_option('company_uuid'));
         $descriptions = new \OnFact\Endpoint\Descriptions();
 
-        return $descriptions->index([], ['X-FORCE-CACHE' => 300]);
+        return $descriptions->index();
     }
 
     /**
@@ -100,7 +97,7 @@ class Onfact_Settings
         \OnFact\Endpoint\Api::setCompanyUuid(get_option('company_uuid'));
         $emaildescriptions = new \OnFact\Endpoint\Emaildescriptions();
 
-        return $emaildescriptions->index([], ['X-FORCE-CACHE' => 300]);
+        return $emaildescriptions->index();
     }
 
 }
