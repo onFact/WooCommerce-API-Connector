@@ -36,6 +36,8 @@ class Onfact_Documents
      */
     public static function create_document($order_id) {
         $order = wc_get_order($order_id);
+        \OnFact\Endpoint\Api::setApiKey(get_option('api_key'));
+        \OnFact\Endpoint\Api::setCompanyUuid(get_option('company_uuid'));
 
         switch (get_option('document_to_create')) {
             case "Orderslip":
