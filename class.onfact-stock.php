@@ -65,7 +65,7 @@ class Onfact_Stock
 
             if ($products->getCount() == 0) {
                 $products = $onFactApi->index([
-                    'q' => 'name:' . $product->get_name() . ' OR number:*' . $product->get_sku() . '*  OR eid:*' . $product->get_sku() . '*'
+                    'q' => 'name:"' . $product->get_name() . '" OR number:*' . $product->get_sku() . '*  OR eid:*' . $product->get_sku() . '*'
                 ], ['X-FORCE-CACHE' => 300]);
             }
 
