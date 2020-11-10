@@ -25,3 +25,12 @@ an order gets the status 'complete'. This can be changed in the code by changing
 can be emailed to the customer after creation.
 
 
+
+### Compatible with following websites:
+* [onFact.be: Online Facturatie Software](https://www.onfact.be)
+* [onFact.nl: Online Facturatie Software](https://www.onfact.nl)
+* [onRech.de: Einfaches rechnungsprogramm](https://www.onrech.de)
+* [enFact.fr: Logiciel de facturation](https://www.enfact.fr)
+* [onFakt.cz: Program na faktury](https://www.onfakt.cz)
+* [onFact.es: Programa de Facturación](https://www.onfact.es)
+* [onFat.pt: Programa de facturação online](https://www.onfat.pt)
