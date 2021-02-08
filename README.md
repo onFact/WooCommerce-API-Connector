@@ -1,5 +1,5 @@
 # onFact WooCommerce plugin
-Version: 0.0.1
+Version: 0.0.3
 
 [Click here to download the complete plugin package](https://onfactpublicresources.s3-eu-west-1.amazonaws.com/woocommerce/onfact.zip)
 ## Disclaimer

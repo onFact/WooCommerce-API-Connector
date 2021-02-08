@@ -1,6 +1,6 @@
 {
   "name": "onfact/woocommerce-api-connector",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "type": "wordpress-plugin",
   "minimum-stability": "dev",
   "repositories": [
