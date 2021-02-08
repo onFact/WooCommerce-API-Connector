@@ -54,22 +54,25 @@ class Onfact_Settings
      * @return \OnFact\Endpoint\Languages|\OnFact\Helper\Index
      */
     public static function get_onfact_languages() {
-        \OnFact\Endpoint\Api::setApiKey(get_option('api_key'));
-        \OnFact\Endpoint\Api::setCompanyUuid(get_option('company_uuid'));
+        try {
+            \OnFact\Endpoint\Api::setApiKey(get_option('api_key'));
+            \OnFact\Endpoint\Api::setCompanyUuid(get_option('company_uuid'));
+            $languages = new \OnFact\Endpoint\Languages();
+            $languages = $languages->index();
 
-        $languages = new \OnFact\Endpoint\Languages();
-        $languages = $languages->index([], ['X-FORCE-CACHE' => 3000]);
+            foreach ($languages->getItems() as $language) {
+                register_setting( 'onfact-settings-orderslip', 'orderslip_description_' . $language->getId());
+                register_setting( 'onfact-settings-orderslip', 'orderslip_emaildescription_' . $language->getId());
+                register_setting( 'onfact-settings-deliveryslip', 'deliveryslip_description_' . $language->getId());
+                register_setting( 'onfact-settings-deliveryslip', 'deliveryslip_emaildescription_' . $language->getId());
+                register_setting( 'onfact-settings-invoice', 'invoice_description_' . $language->getId());
+                register_setting( 'onfact-settings-invoice', 'invoice_emaildescription_' . $language->getId());
+            }
 
-        foreach ($languages->getItems() as $language) {
-            register_setting( 'onfact-settings-orderslip', 'orderslip_description_' . $language->getId());
-            register_setting( 'onfact-settings-orderslip', 'orderslip_emaildescription_' . $language->getId());
-            register_setting( 'onfact-settings-deliveryslip', 'deliveryslip_description_' . $language->getId());
-            register_setting( 'onfact-settings-deliveryslip', 'deliveryslip_emaildescription_' . $language->getId());
-            register_setting( 'onfact-settings-invoice', 'invoice_description_' . $language->getId());
-            register_setting( 'onfact-settings-invoice', 'invoice_emaildescription_' . $language->getId());
+            return $languages;
+        }  catch (\Exception $e) {
+            return [];
         }
-
-        return $languages;
     }
 
     /**
